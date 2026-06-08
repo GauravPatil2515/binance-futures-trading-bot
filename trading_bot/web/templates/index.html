@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Binance Futures Bot</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">&#9651;</span>
+        <span class="logo-text">PrimeTrade <span class="logo-sub">Testnet</span></span>
+      </div>
+      <div class="header-badge">USDT-M Futures</div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="main">
+
+    <!-- Order Form Card -->
+    <section class="card">
+      <h2 class="card-title">Place Order</h2>
+
+      <form id="orderForm" novalidate>
+
+        <!-- Symbol -->
+        <div class="form-group">
+          <label for="symbol">Symbol</label>
+          <input id="symbol" name="symbol" type="text" placeholder="e.g. BTCUSDT" autocomplete="off" required />
+        </div>
+
+        <!-- Side -->
+        <div class="form-group">
+          <label>Side</label>
+          <div class="toggle-group" id="sideToggle">
+            <button type="button" class="toggle-btn buy active" data-value="BUY">BUY</button>
+            <button type="button" class="toggle-btn sell" data-value="SELL">SELL</button>
+          </div>
+          <input type="hidden" id="side" name="side" value="BUY" />
+        </div>
+
+        <!-- Order Type -->
+        <div class="form-group">
+          <label for="order_type">Order Type</label>
+          <select id="order_type" name="order_type">
+            <option value="MARKET">Market</option>
+            <option value="LIMIT">Limit</option>
+            <option value="STOP_MARKET">Stop-Market</option>
+          </select>
+        </div>
+
+        <!-- Quantity -->
+        <div class="form-group">
+          <label for="quantity">Quantity</label>
+          <input id="quantity" name="quantity" type="number" step="any" min="0.00001" placeholder="0.001" required />
+        </div>
+
+        <!-- Price (Limit only) -->
+        <div class="form-group" id="priceGroup" style="display:none">
+          <label for="price">Limit Price <span class="label-hint">(USDT)</span></label>
+          <input id="price" name="price" type="number" step="any" min="0" placeholder="70000" />
+        </div>
+
+        <!-- Stop Price (Stop-Market only) -->
+        <div class="form-group" id="stopPriceGroup" style="display:none">
+          <label for="stop_price">Stop Price <span class="label-hint">(USDT)</span></label>
+          <input id="stop_price" name="stop_price" type="number" step="any" min="0" placeholder="65000" />
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">
+          <span id="btnText">Place Order</span>
+          <span id="btnSpinner" class="spinner" style="display:none"></span>
+        </button>
+
+      </form>
+    </section>
+
+    <!-- Response Card -->
+    <section class="card" id="responseCard" style="display:none">
+      <h2 class="card-title" id="responseTitle">Order Result</h2>
+      <div id="responseBody"></div>
+    </section>
+
+    <!-- Order History -->
+    <section class="card" id="historyCard" style="display:none">
+      <h2 class="card-title">Order History <span class="history-count" id="historyCount">0</span></h2>
+      <div class="history-table-wrap">
+        <table class="history-table">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Symbol</th>
+              <th>Side</th>
+              <th>Type</th>
+              <th>Qty</th>
+              <th>Avg Price</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="historyBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
