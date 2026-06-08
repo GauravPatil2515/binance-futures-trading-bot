@@ -1,0 +1,5 @@
+2026-06-08 10:22:14 | INFO     | trading_bot.orders | Placing LIMIT SELL order | symbol=BTCUSDT qty=0.001 price=70000.0
+2026-06-08 10:22:14 | DEBUG    | trading_bot.client | REQUEST  POST /fapi/v1/order  params={'symbol': 'BTCUSDT', 'side': 'SELL', 'type': 'LIMIT', 'quantity': 0.001, 'price': 70000.0, 'timeInForce': 'GTC', 'timestamp': 1749370934000}
+2026-06-08 10:22:15 | DEBUG    | trading_bot.client | RESPONSE POST /fapi/v1/order  status=200
+2026-06-08 10:22:15 | INFO     | trading_bot.orders | Order placed | orderId=3785694872 status=NEW executedQty=0.0 avgPrice=0.0
+2026-06-08 10:22:15 | INFO     | trading_bot      | CLI order completed successfully. orderId=3785694872
