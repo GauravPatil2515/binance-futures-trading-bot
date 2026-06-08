@@ -8,13 +8,13 @@ document.querySelectorAll('#sideToggle .toggle-btn').forEach(btn => {
 });
 
 /* ===== Order Type — show/hide price fields ===== */
-const orderTypeEl   = document.getElementById('order_type');
-const priceGroup    = document.getElementById('priceGroup');
+const orderTypeEl = document.getElementById('order_type');
+const priceGroup = document.getElementById('priceGroup');
 const stopPriceGroup = document.getElementById('stopPriceGroup');
 
 function updatePriceFields() {
   const t = orderTypeEl.value;
-  priceGroup.style.display     = t === 'LIMIT'       ? 'flex' : 'none';
+  priceGroup.style.display = t === 'LIMIT' ? 'flex' : 'none';
   stopPriceGroup.style.display = t === 'STOP_MARKET' ? 'flex' : 'none';
 }
 orderTypeEl.addEventListener('change', updatePriceFields);
@@ -25,21 +25,21 @@ const history = [];
 
 function addToHistory(res) {
   history.unshift(res);
-  const historyCard  = document.getElementById('historyCard');
+  const historyCard = document.getElementById('historyCard');
   const historyCount = document.getElementById('historyCount');
-  const tbody        = document.getElementById('historyBody');
+  const tbody = document.getElementById('historyBody');
   historyCard.style.display = 'block';
-  historyCount.textContent  = history.length;
+  historyCount.textContent = history.length;
 
   const d = res;
   const avgPrice = d.avgPrice && parseFloat(d.avgPrice) > 0 ? parseFloat(d.avgPrice).toFixed(2) : d.price || '—';
-  const status   = (d.status || '').toUpperCase();
+  const status = (d.status || '').toUpperCase();
   const statusCls = status === 'FILLED' ? 'status-filled-cell' : status === 'NEW' ? 'status-new-cell' : '';
 
   const tr = document.createElement('tr');
   tr.innerHTML = `
     <td>${d.orderId || '—'}</td>
-    <td>${d.symbol  || '—'}</td>
+    <td>${d.symbol || '—'}</td>
     <td class="${d.side === 'BUY' ? 'side-buy' : 'side-sell'}">${d.side || '—'}</td>
     <td>${d.type || '—'}</td>
     <td>${d.origQty || '—'}</td>
@@ -53,7 +53,7 @@ function addToHistory(res) {
 function renderSuccess(data) {
   const card = document.getElementById('responseCard');
   const title = document.getElementById('responseTitle');
-  const body  = document.getElementById('responseBody');
+  const body = document.getElementById('responseBody');
 
   card.className = 'card response-success';
   title.textContent = 'Order Result';
@@ -85,9 +85,9 @@ function renderSuccess(data) {
 }
 
 function renderError(message) {
-  const card  = document.getElementById('responseCard');
+  const card = document.getElementById('responseCard');
   const title = document.getElementById('responseTitle');
-  const body  = document.getElementById('responseBody');
+  const body = document.getElementById('responseBody');
 
   card.className = 'card response-error';
   title.textContent = 'Order Failed';
@@ -104,7 +104,7 @@ function renderError(message) {
 document.getElementById('orderForm').addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  const btn     = document.getElementById('submitBtn');
+  const btn = document.getElementById('submitBtn');
   const btnText = document.getElementById('btnText');
   const spinner = document.getElementById('btnSpinner');
 
@@ -113,23 +113,23 @@ document.getElementById('orderForm').addEventListener('submit', async (e) => {
   spinner.style.display = 'inline-block';
 
   const payload = {
-    symbol:     document.getElementById('symbol').value.trim().toUpperCase(),
-    side:       document.getElementById('side').value,
+    symbol: document.getElementById('symbol').value.trim().toUpperCase(),
+    side: document.getElementById('side').value,
     order_type: document.getElementById('order_type').value,
-    quantity:   parseFloat(document.getElementById('quantity').value),
-    price:      parseFloat(document.getElementById('price').value) || null,
+    quantity: parseFloat(document.getElementById('quantity').value),
+    price: parseFloat(document.getElementById('price').value) || null,
     stop_price: parseFloat(document.getElementById('stop_price').value) || null,
   };
 
   try {
-    const res  = await fetch('/api/order', {
+    const res = await fetch('/api/order', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     });
     const json = await res.json();
     if (json.success) renderSuccess(json.data);
-    else              renderError(json.error || 'Unknown error');
+    else renderError(json.error || 'Unknown error');
   } catch (err) {
     renderError('Network error: could not reach the server.');
   } finally {
