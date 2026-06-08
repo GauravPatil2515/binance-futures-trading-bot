@@ -1,5 +1,5 @@
-2026-06-08 15:59:29 | INFO     | trading_bot.orders | Placing LIMIT SELL order | symbol=BTCUSDT qty=0.001 price=70000.0
-2026-06-08 15:59:29 | DEBUG    | trading_bot.client | REQUEST  POST /fapi/v1/order  params={'symbol': 'BTCUSDT', 'side': 'SELL', 'type': 'LIMIT', 'quantity': 0.001, 'price': 70000.0, 'timeInForce': 'GTC', 'timestamp': 1780914569270}
-2026-06-08 15:59:31 | DEBUG    | trading_bot.client | RESPONSE POST /fapi/v1/order  status=200
-2026-06-08 15:59:31 | INFO     | trading_bot.orders | Order placed | orderId=14492417403 status=NEW executedQty=0.0000 avgPrice=None
-2026-06-08 15:59:31 | INFO     | trading_bot | CLI order completed successfully. orderId=14492417403
+2026-06-08 16:09:48 | INFO     | trading_bot.orders | Placing order | type=LIMIT side=SELL symbol=BTCUSDT qty=0.001 price=70000.0 stopPrice=None
+2026-06-08 16:09:48 | DEBUG    | trading_bot.client | → POST /fapi/v1/order  {'symbol': 'BTCUSDT', 'side': 'SELL', 'type': 'LIMIT', 'quantity': 0.001, 'price': 70000.0, 'timeInForce': 'GTC', 'timestamp': 1780915188876}
+2026-06-08 16:09:49 | DEBUG    | trading_bot.client | ← POST /fapi/v1/order  HTTP 200
+2026-06-08 16:09:49 | INFO     | trading_bot.orders | Order accepted | orderId=14492903176 symbol=BTCUSDT status=NEW executedQty=0.0000 avgPrice=None
+2026-06-08 16:09:49 | INFO     | trading_bot | CLI completed | orderId=14492903176 status=NEW

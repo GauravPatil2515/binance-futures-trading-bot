@@ -1,5 +1,5 @@
-2026-06-08 15:58:40 | INFO     | trading_bot.orders | Placing MARKET BUY order | symbol=BTCUSDT qty=0.001 price=None
-2026-06-08 15:58:40 | DEBUG    | trading_bot.client | REQUEST  POST /fapi/v1/order  params={'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': 0.001, 'timestamp': 1780914520275}
-2026-06-08 15:58:41 | DEBUG    | trading_bot.client | RESPONSE POST /fapi/v1/order  status=200
-2026-06-08 15:58:41 | INFO     | trading_bot.orders | Order placed | orderId=14492376025 status=NEW executedQty=0.0000 avgPrice=None
-2026-06-08 15:58:41 | INFO     | trading_bot | CLI order completed successfully. orderId=14492376025
+2026-06-08 16:09:23 | INFO     | trading_bot.orders | Placing order | type=MARKET side=BUY symbol=BTCUSDT qty=0.001 price=None stopPrice=None
+2026-06-08 16:09:23 | DEBUG    | trading_bot.client | → POST /fapi/v1/order  {'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': 0.001, 'timestamp': 1780915163351}
+2026-06-08 16:09:24 | DEBUG    | trading_bot.client | ← POST /fapi/v1/order  HTTP 200
+2026-06-08 16:09:24 | INFO     | trading_bot.orders | Order accepted | orderId=14492887673 symbol=BTCUSDT status=NEW executedQty=0.0000 avgPrice=None
+2026-06-08 16:09:24 | INFO     | trading_bot | CLI completed | orderId=14492887673 status=NEW
