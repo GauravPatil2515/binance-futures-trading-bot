@@ -9,10 +9,14 @@ from typing import Optional
 # Ensure package root is in path when run directly
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from dotenv import load_dotenv
+load_dotenv()
+
 from trading_bot.bot.logging_config import setup_logging
 from trading_bot.bot.client import BinanceFuturesClient, BinanceClientError
 from trading_bot.bot.orders import OrderManager
 from trading_bot.bot.validators import ValidationError
+
 
 
 BANNER = """
